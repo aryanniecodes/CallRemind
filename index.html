@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallRemind • Never Miss a Call</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">📞</div>
+            <h1>CallRemind</h1>
+        </div>
+        <button onclick="openFormModal()" class="new-reminder-btn">
+            <span class="plus">+</span>
+            NEW REMINDER
+        </button>
+    </header>
+
+    <div class="main-container">
+        <!-- LEFT SIDEBAR - FILTERS & NAV -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Filter Calls</h2>
+                <p class="sidebar-subtitle">Change your card stack instantly</p>
+            </div>
+            
+            <div id="filter-container" class="filter-list">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="sidebar-footer">
+                <button onclick="shuffleCards()" class="sidebar-action-btn">
+                    🔀 Shuffle Cards
+                </button>
+                <button onclick="resetAllCards()" class="sidebar-action-btn reset-btn">
+                    ♻️ Reset All Data
+                </button>
+                <div class="card-count" id="card-count">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CARD STACK AREA -->
+        <div class="stack-container">
+            <div class="stack-header">
+                <h2 id="stack-title">Upcoming Reminders</h2>
+                <div class="stack-subtitle">Drag the top card like Tinder • Only top card is interactive</div>
+            </div>
+
+            <!-- CARD STACK -->
+            <div id="card-stack" class="card-stack">
+                <!-- All cards dynamically injected by JS -->
+            </div>
+
+            <!-- TINDER-STYLE ACTION BAR -->
+            <div class="action-bar">
+                <button onclick="manualSwipe('left')" class="tinder-btn tinder-left" title="Dismiss (Mark as Done)">
+                    ✕
+                </button>
+                <button onclick="manualSwipe('right')" class="tinder-btn tinder-right" title="Snooze (Move to end)">
+                    ✓
+                </button>
+            </div>
+
+            <p class="help-text">← Swipe left = Done  Swipe right = Snooze →<br>or drag the top card with mouse/touch</p>
+        </div>
+    </div>
+
+    <!-- FORM MODAL -->
+    <div id="form-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Call Reminder</h2>
+                <button onclick="closeFormModal()" class="modal-close">✕</button>
+            </div>
+            
+            <form id="reminder-form">
+                <div class="form-group">
+                    <label>Image URL (profile photo)</label>
+                    <input type="text" id="image-url" placeholder="https://picsum.photos/id/64/300/300" value="https://picsum.photos/id/64/300/300">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="full-name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Home Town</label>
+                        <input type="text" id="home-town" placeholder="Hometown" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Purpose of Call</label>
+                    <textarea id="purpose" rows="3" placeholder="Purpose of the call..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <div class="radio-group">
+                        <label class="radio-option emergency">
+                            <input type="radio" name="category" value="emergency" checked>
+                            <span class="radio-label">🚨 Emergency</span>
+                        </label>
+                        <label class="radio-option urgent">
+                            <input type="radio" name="category" value="urgent">
+                            <span class="radio-label">⚡ Urgent</span>
+                        </label>
+                        <label class="radio-option important">
+                            <input type="radio" name="category" value="important">
+                            <span class="radio-label">⭐ Important</span>
+                        </label>
+                        <label class="radio-option no-rush">
+                            <input type="radio" name="category" value="no-rush">
+                            <span class="radio-label">🌿 No Rush</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" onclick="closeFormModal()" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="create-btn">Create Card &amp; Add to Stack</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
