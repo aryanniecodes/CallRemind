@@ -1,6 +1,6 @@
 # CallRemind
 
-A simple call reminder web application with Tinder-style swipe cards.
+A simple call reminder web application with Tinder-style swipe cards. For Education Purpose.
 
 ## Features
 - Add new call reminders with image, name, hometown, purpose and category
